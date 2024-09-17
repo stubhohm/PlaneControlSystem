@@ -1,7 +1,7 @@
 from ...GeneralClasses.ControlSurface import ControlSurface
 from ...GeneralClasses.Attributes import StrAtt, BoolAtt
 
-class Stabilators(ControlSurface):
+class Elevon(ControlSurface):
     def __init__(self, name, laterality:str, proximal:bool) -> None:
         super().__init__()
         self.name.set_value(name)

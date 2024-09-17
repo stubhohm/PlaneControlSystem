@@ -37,3 +37,19 @@ class StrAtt(Attribute):
         if not self.value:
             self.set_value('No String Set')
         return self.get_value()
+
+class Vect3Att(Attribute):
+    def __init__(self) -> None:
+        super().__init__()
+        self.x = IntAtt(0)
+        self.y = IntAtt(0)
+        self.z = IntAtt(0)
+
+    def get_normal(self):
+        print('got normal')
+
+class Vect2Att(Attribute):
+    def __init__(self) -> None:
+        super().__init__()
+        self.x = IntAtt(0)
+        self.y = IntAtt(0)
