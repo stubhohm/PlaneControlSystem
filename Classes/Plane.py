@@ -32,9 +32,23 @@ class Plane ():
         roll = control_input.x.get_value()
         pitch = control_input.y.get_value()
         yaw = control_input.z.get_value()
+        self.telemetry.orientation.set_value(control_input)
 
     def __set_SAS(self, stability_assistance:bool):
         self.stability_assistance.set_value(stability_assistance)
+
+    def startup_sequence(self):
+        self.engines.activate_engines()
+        self.landing_gear.deploy()
+        self.landing_gear.engage_brakes()
+        self.elevons.return_to_zero()
+
+    def print(self):
+        self.telemetry.print()
+        self.elevons.print()
+        self.rudders.print()
+        self.landing_gear.print()
+        self.engines.print()
 
     def impliment_control_inputs(self, SAS_toggle:bool, thrust:int, trim_vector:Vect3Att, control_vector:Vect3Att):
         self.__set_SAS(SAS_toggle)
@@ -42,8 +56,19 @@ class Plane ():
         self.__set_trim(trim_vector)
         self.__set_control_surfaces(control_vector)
 
-    def get_telemetry(self):
-        orientation = Vect3Att()
-        self.telemetry.update_telemetry(10, orientation, .1)
-        self.telemetry.print()
+    def run(self):
+        self.engines.run()
+        self.elevons.run()
+        self.rudders.run()
+        self.landing_gear.run()
+
+    def set_telemetry(self):
+
+        max_speed = 30
+        thrust = self.engines.get_thrust()
+        avg_thrust = int ((thrust[0] + thrust[1])/2)
+        speed = int(max_speed * (avg_thrust / 100))
+        
+        self.telemetry.update_telemetry(speed, self.telemetry.orientation.get_value(), .1)
+
 

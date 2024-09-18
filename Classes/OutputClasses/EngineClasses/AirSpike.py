@@ -8,10 +8,11 @@ class AirSpike(ControlSurface):
         self.change_rate.set_value(1)
 
     def deploy(self):
-        self.move_to_target()
+        if not self.move_to_target():
+            print(f'{self.name.get_value()} is not in tolerance.')
 
     def retract(self):
         self.return_to_zero()
 
     def calculate_target(self):
-        pass
+        return

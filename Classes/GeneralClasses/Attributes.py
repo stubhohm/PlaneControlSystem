@@ -22,7 +22,6 @@ class IntAtt(Attribute):
     
     def set_value(self, value:int):
         self.value = value
-        print(self.value)
     
     def add(self, value:int):
         sum = self.get_value() + value
@@ -79,7 +78,6 @@ class Vect3Att(Attribute):
 
     def __to_tuple(self, vector: 'Vect3Att'):
             vector_tuple = (vector.x.get_value(), vector.y.get_value(), vector.z.get_value())
-            print(vector_tuple)
             return vector_tuple
 
     def set_value(self, value: 'Vect3Att'):

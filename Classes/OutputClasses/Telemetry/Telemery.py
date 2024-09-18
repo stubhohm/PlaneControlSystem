@@ -25,6 +25,7 @@ class Telemetry():
         vx = speed * math.cos(pitch_rad) * math.cos(yaw_rad)
         vy = speed * math.cos(pitch_rad) * math.sin(yaw_rad)
         vz = speed * math.sin(pitch_rad)
+        print(vx, vy, vz)
         return (vx, vy, vz)
 
     def update_telemetry(self, speed:int, orientation:Vect3Att, delta_time:float):

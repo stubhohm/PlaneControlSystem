@@ -7,11 +7,12 @@ class Throttle(ControlSurface):
         self.change_rate.set_value(1)
 
     def deploy(self):
-        self.move_to_target()
+        if not self.move_to_target():
+            print(f'{self.name.get_value()} is not in tolerance.')
 
     def retract(self):
         self.return_to_zero()
 
     def set_target_position(self, value: int):
-        return super().set_target_position(value)
+        super().set_target_position(value)
 
