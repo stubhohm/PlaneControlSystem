@@ -1,17 +1,44 @@
+from Keys.Keys import left, right, proximal, distal
 from .GeneralClasses.Attributes import BoolAtt, IntAtt, StrAtt
 from .GeneralClasses.Attributes import Vect2Att, Vect3Att
-from .OutputClasses.AirSpikeClasses import AirSpike
-from .OutputClasses.ThrottleClasses import Throttle
-from .OutputClasses.ControlSurfaceClasses import Elevon
-left_outboard = 'LoB'
-left_inboard = 'LiB'
-right_outboard = 'RoB'
-right_inboard = 'RiB'
+from .OutputClasses.EngineClasses.Engine import Engines
+from .OutputClasses.ControlSurfaceClasses.Elevon import Elevons
+from .OutputClasses.ControlSurfaceClasses.Rudder import Rudders
+from .OutputClasses.ControlSurfaceClasses.LandingGear import LandingGear
+from .OutputClasses.Telemetry.Telemery import Telemetry
 
 class Plane ():
-    def __init__(self) -> None:
-        self.position = Vect3Att()
-        self.orientation = Vect3Att()
-        self.elevons:dict = {left_outboard : Elevon(left_outboard, )}
+    def __init__(self, name) -> None:
+        self.name = StrAtt(name)
+        self.telemetry = Telemetry()
+        self.elevons = Elevons() 
+        self.rudders = Rudders() 
+        self.engines = Engines()
+        self.landing_gear = LandingGear()
+        self.stability_assistance = BoolAtt(False)
+        
+    def get_coordinates(self):
+        print('not impliments')
 
+    def __set_trim(self, trim:Vect3Att):
+        roll = trim.x.get_value()
+        ptich = trim.y.get_value()
+        yaw = trim.z.get_value()
+
+    def __set_thrust(self, thrust:int):
+        self.engines.set_thrust(thrust)
+    
+    def __set_control_surfaces(self, control_input:Vect3Att):
+        roll = control_input.x.get_value()
+        pitch = control_input.y.get_value()
+        yaw = control_input.z.get_value()
+
+    def __set_SAS(self, stability_assistance:bool):
+        self.stability_assistance.set_value(stability_assistance)
+
+    def impliment_control_inputs(self, SAS_toggle:bool, thrust:int, trim_vector:Vect3Att, control_vector:Vect3Att):
+        self.__set_SAS(SAS_toggle)
+        self.__set_thrust(thrust)
+        self.__set_trim(trim_vector)
+        self.__set_control_surfaces(control_vector)
 
