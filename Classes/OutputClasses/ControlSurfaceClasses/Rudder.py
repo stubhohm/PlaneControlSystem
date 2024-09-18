@@ -1,5 +1,5 @@
-from ....Keys.Keys import left_rudder, right_rudder
-from ....Keys.Keys import left, right
+from Keys.Keys import left_rudder, right_rudder
+from Keys.Keys import left, right
 from ...GeneralClasses.ControlSurface import ControlSurface
 from ...GeneralClasses.Attributes import StrAtt, BoolAtt
 

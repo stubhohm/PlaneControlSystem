@@ -12,7 +12,7 @@ class ControlSurface():
         self.target_trim = IntAtt(0)
         self.change_rate = IntAtt(5)
         self.target_tolerance = IntAtt(int(self.change_rate.get_value()/2 + 1))
-        self.name = StrAtt()
+        self.name = StrAtt('Unnamed Control Surface')
 
     def __bind_target_position(self):
         if self.target_position.get_value() > self.max_position.get_value():

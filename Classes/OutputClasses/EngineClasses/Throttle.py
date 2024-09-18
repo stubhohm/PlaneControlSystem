@@ -1,4 +1,3 @@
-from ...GeneralClasses.Attributes import Attribute
 from ...GeneralClasses.ControlSurface import ControlSurface
 
 class Throttle(ControlSurface):

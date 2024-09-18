@@ -1,4 +1,4 @@
-from ....Modules.Dependencies import math
+from Modules.Dependencies import math
 from ...GeneralClasses.Attributes import Vect3Att, BoolAtt, IntAtt
 
 class Telemetry():
@@ -35,6 +35,18 @@ class Telemetry():
         self.position.set_value(self.position.add_vector(self.sample_distance))
         total_dist = self.total_distance.add(self.sample_distance.get_magnitude())
         self.total_distance.set_value(total_dist)
+
+    def print(self):
+        speed_readout = f"Current speed of {self.velocity.get_magnitude()} m/s."
+        distance_readout = f"Current total distance of {self.total_distance.get_value()} meters."
+        heading_readout = f"Pitch: {self.orientation.y.get_value()}, Roll: {self.orientation.x.get_value()}, Yaw: {self.orientation.z.get_value()}"
+        position_readout = f"Position x:{self.position.x.get_value()}, z:{self.position.z.get_value()}"
+        altitude_readout = f"Altitude: {self.position.y.get_value()}"
+        print(speed_readout)
+        print(distance_readout)
+        print(heading_readout)
+        print(position_readout)
+        print(altitude_readout)
 
 
 

@@ -1,12 +1,13 @@
 from Classes.Plane import Plane
-from Classes.InputClasses import Controller
+from Classes.InputClasses.Controller import Controller
 
 plane = Plane('SR 71')
 controller = Controller()
 
 def abort_loop(i:int):
     if i % 10 != 0:
-        return
+        return True
+    plane.get_telemetry()
     response = input("Press 'Y' to abort: ").strip().lower()
     if 'y' in response:
         return False
@@ -26,11 +27,9 @@ def main():
     running = True
     i = 1
     while running:
+
+
         running = abort_loop(i)
         i = incriment_i(i)
-
-
-        
-
 
 main()

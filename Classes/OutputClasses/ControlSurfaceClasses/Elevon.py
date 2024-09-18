@@ -1,6 +1,6 @@
-from ....Keys.Keys import left_inboard, left_outboard
-from ....Keys.Keys import right_inboard, right_outboard
-from ....Keys.Keys import left, right, proximal, distal
+from Keys.Keys import left_inboard, left_outboard
+from Keys.Keys import right_inboard, right_outboard
+from Keys.Keys import left, right, proximal, distal
 from ...GeneralClasses.ControlSurface import ControlSurface
 from ...GeneralClasses.Attributes import StrAtt, BoolAtt
 

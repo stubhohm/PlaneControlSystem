@@ -2,13 +2,13 @@ from Modules.Dependencies import math
 
 class Attribute():
     def __init__(self) -> None:
-        self.__value = None
+        self.value = None
 
     def get_value(self):
-        return self.__value
+        return self.value
     
     def set_value(self, value):
-        self.__value = value
+        self.value = value
 
 class IntAtt(Attribute):
     def __init__(self, value:int) -> None:
@@ -16,12 +16,13 @@ class IntAtt(Attribute):
         self.set_value(value)
 
     def get_value(self) -> int:
-        if not self.__value:
+        if not self.value:
             self.set_value(0)
-        return self.get_value()
+        return super().get_value()
     
     def set_value(self, value:int):
-        return super().set_value(value)
+        self.value = value
+        print(self.value)
     
     def add(self, value:int):
         sum = self.get_value() + value
@@ -37,12 +38,12 @@ class BoolAtt(Attribute):
         self.set_value(value)
 
     def get_value(self) -> bool:
-        if not self.__value:
+        if not self.value:
             self.set_value(False)
-        return self.get_value()
+        return super().get_value()
     
     def set_value(self, value:bool):
-        return super().set_value(value)
+        self.value = value
     
 class StrAtt(Attribute):
     def __init__(self, value:str) -> None:
@@ -50,12 +51,12 @@ class StrAtt(Attribute):
         self.set_value(value)
 
     def get_value(self) -> str:
-        if not self.__value:
+        if not self.value:
             self.set_value('No String Set')
-        return self.get_value()
+        return super().get_value()
     
     def set_value(self, value:str):
-        return super().set_value(value)
+        self.value = value
 
 class Vect3Att(Attribute):
     def __init__(self) -> None:
@@ -74,13 +75,14 @@ class Vect3Att(Attribute):
         self.x.set_value(vector[0])
         self.y.set_value(vector[1])
         self.z.set_value(vector[2])
-        super().set_value(vector)
+        self.value = vector
 
     def __to_tuple(self, vector: 'Vect3Att'):
             vector_tuple = (vector.x.get_value(), vector.y.get_value(), vector.z.get_value())
+            print(vector_tuple)
             return vector_tuple
 
-    def set_value(self, value: 'Vect3Att' | tuple[int,int,int]):
+    def set_value(self, value: 'Vect3Att'):
         if type(value) == Vect3Att:
             value = self.__to_tuple(value)
         self.__set_value_from_tuple(value)
@@ -98,7 +100,7 @@ class Vect3Att(Attribute):
         z = self.z.get_value() * scaler
         return (x, y, z)
     
-    def add_vector(self, vector: 'Vect3Att' | tuple[int,int,int]):
+    def add_vector(self, vector: 'Vect3Att'):
         vector_1 = self.__to_tuple(self)
         if type(vector) == Vect3Att:
             vector = self.__to_tuple(vector)
@@ -125,13 +127,13 @@ class Vect2Att(Attribute):
     def __set_value_from_tuple(self, vector:tuple[int,int]):
         self.x.set_value(vector[0])
         self.y.set_value(vector[1])
-        super().set_value(vector)
+        self.value = vector
 
     def __to_tuple(self, vector: 'Vect2Att'):
             vector_tuple = (vector.x.get_value(), vector.y.get_value())
             return vector_tuple
 
-    def set_value(self, value: 'Vect2Att' | tuple[int,int]):
+    def set_value(self, value: 'Vect2Att'):
         if type(value) == Vect2Att:
             value = self.__to_tuple(value)
         self.__set_value_from_tuple(value)
@@ -147,7 +149,7 @@ class Vect2Att(Attribute):
         y = self.y.get_value() * scaler
         return (x, y)
     
-    def add_vector(self, vector: 'Vect2Att' | tuple[int,int]):
+    def add_vector(self, vector: 'Vect2Att'):
         vector_1 = self.__to_tuple(self)
         if type(vector) == Vect2Att:
             vector = self.__to_tuple(vector)

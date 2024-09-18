@@ -42,3 +42,8 @@ class Plane ():
         self.__set_trim(trim_vector)
         self.__set_control_surfaces(control_vector)
 
+    def get_telemetry(self):
+        orientation = Vect3Att()
+        self.telemetry.update_telemetry(10, orientation, .1)
+        self.telemetry.print()
+
