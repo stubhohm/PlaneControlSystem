@@ -4,44 +4,44 @@ from ...GeneralClasses.Attributes import BoolAtt
 class Wheel(ControlSurface):
     def __init__(self) -> None:
         super().__init__()
-        self.min_position.set_value(0)
-        self.change_rate.set_value(1)
+        self.min_position.set(0)
+        self.change_rate.set(1)
         self.deploying = BoolAtt(False)
         self.deployed = BoolAtt(False)
         self.brakes_engaged = BoolAtt(False)
 
     def engage_brakes(self):
-        self.brakes_engaged.set_value(True)
+        self.brakes_engaged.set(True)
 
     def release_brakes(self):
-        self.brakes_engaged.set_value(False)
+        self.brakes_engaged.set(False)
 
     def get_brake_state(self):
-        self.brakes_engaged.get_value()
+        self.brakes_engaged.get()
 
     def set_wheel_bools(self):
-        if self.current_position.get_value() == self.max_position.get_value():
-            self.deploying.set_value(False)
-            self.deployed.set_value(True)
+        if self.current_position.get() == self.max_position.get():
+            self.deploying.set(False)
+            self.deployed.set(True)
         else:
-            self.deploying.set_value(True)
-            self.deployed.set_value(False)
+            self.deploying.set(True)
+            self.deployed.set(False)
 
     def get_wheel_bools(self):
         self.set_wheel_bools()
-        return self.deployed.get_value(), self.deploying.get_value()
+        return self.deployed.get(), self.deploying.get()
 
     def print_wheel_bools(self, position:str):
-        if self.deploying.get_value() == True:
+        if self.deploying.get() == True:
             print(f"Wheel in {position} is deploying.")
-        if self.deployed.get_value() == True:
+        if self.deployed.get() == True:
             print(f"Wheel in {position} is deployed.")
-        if self.brakes_engaged.get_value == True:
+        if self.brakes_engaged.get == True:
             print(f"Wheel in {position} is braking.")
 
     def deploy(self):
         if not self.move_to_target():
-            print(f'{self.name.get_value()} is not in tolerance.')
+            print(f'{self.name.get()} is not in tolerance.')
         self.set_wheel_bools()
      
     def retract(self):

@@ -23,12 +23,12 @@ class Rudders():
 class Rudder(ControlSurface):
     def __init__(self, name, laterality:bool) -> None:
         super().__init__()
-        self.name.set_value(name)
+        self.name.set(name)
         self.laterality = BoolAtt(laterality)
     
     def deploy(self):
         if not self.move_to_target():
-            print(f'{self.name.get_value()} is not in tolerance.')
+            print(f'{self.name.get()} is not in tolerance.')
 
     def retract(self):
         self.return_to_zero()
@@ -37,6 +37,6 @@ class Rudder(ControlSurface):
         super().set_target_position(value)
 
     def print(self):
-        print(f'\n{self.name.get_value()}')
-        print(f'Current: {self.current_position.get_value()}')
-        print(f'Target:{self.target_position.get_value()}')
+        print(f'\n{self.name.get()}')
+        print(f'Current: {self.current_position.get()}')
+        print(f'Target:{self.target_position.get()}')

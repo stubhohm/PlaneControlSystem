@@ -1,3 +1,6 @@
+import tracemalloc
+tracemalloc.start()
+
 from Classes.Plane import Plane
 from Classes.InputClasses.Controller import Controller
 from Classes.GeneralClasses.Attributes import Vect3Att
@@ -36,11 +39,11 @@ def main():
     orient_pos = [0, 0, 0]
     trim_pos = [0 ,0, 0]
     orient = Vect3Att()
-    orient.set_value(orient_pos)
+    orient.set(orient_pos)
     trim = Vect3Att()
-    trim.set_value(trim_pos)
+    trim.set(trim_pos)
     while running:
-        controller.set_values(throttle, assist, gear_deploy, orient, trim)
+        controller.sets(throttle, assist, gear_deploy, orient, trim)
         plane.impliment_control_inputs(assist, throttle, trim, orient)
         plane.run()
         plane.set_telemetry()
@@ -48,4 +51,14 @@ def main():
         running = abort_loop(i)
         i = incriment_i(i)
 
+
 main()
+
+# Get the current memory usage
+current, peak = tracemalloc.get_traced_memory()
+
+print(f"Current memory usage: {current / 1024} KB")
+print(f"Peak memory usage: {peak / 1024} KB")
+
+# Stop tracking memory
+tracemalloc.stop()

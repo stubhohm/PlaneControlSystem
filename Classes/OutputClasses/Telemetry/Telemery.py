@@ -1,4 +1,4 @@
-from Modules.Dependencies import math
+from Modules.Dependencies import cosine_lookup, sine_lookup
 from ...GeneralClasses.Attributes import Vect3Att, BoolAtt, IntAtt
 
 class Telemetry():
@@ -15,34 +15,34 @@ class Telemetry():
         self.__set_telemetry_bounds()
 
     def __set_telemetry_bounds(self):
-        self.orientation.maximum.set_value(360)
-        self.initial_orientation.maximum.set_value(360)
+        self.orientation.maximum.set(360)
+        self.initial_orientation.maximum.set(360)
 
     def __calculate_velocity(self, speed:int):
-        pitch_rad = math.radians(self.orientation.y.get_value())
-        yaw_rad = math.radians(self.orientation.z.get_value())
+        pitch = self.orientation.y.get()
+        yaw = self.orientation.z.get()
     
-        vx = speed * math.cos(pitch_rad) * math.cos(yaw_rad)
-        vy = speed * math.cos(pitch_rad) * math.sin(yaw_rad)
-        vz = speed * math.sin(pitch_rad)
+        vx = speed * cosine_lookup(pitch) * cosine_lookup(yaw)
+        vy = speed * cosine_lookup(pitch) * sine_lookup(yaw)
+        vz = speed * sine_lookup(pitch)
         print(vx, vy, vz)
         return (vx, vy, vz)
 
     def update_telemetry(self, speed:int, orientation:Vect3Att, delta_time:float):
-        self.last_position.set_value(self.position.get_value())
-        self.orientation.set_value(orientation)
-        self.velocity.set_value(self.__calculate_velocity(speed))
-        self.sample_distance.set_value(self.velocity.scale_vector(delta_time))
-        self.position.set_value(self.position.add_vector(self.sample_distance))
+        self.last_position.set(self.position.get())
+        self.orientation.set(orientation)
+        self.velocity.set(self.__calculate_velocity(speed))
+        self.sample_distance.set(self.velocity.scale_vector(delta_time))
+        self.position.set(self.position.add_vector(self.sample_distance))
         total_dist = self.total_distance.add(self.sample_distance.get_magnitude())
-        self.total_distance.set_value(total_dist)
+        self.total_distance.set(total_dist)
 
     def print(self):
-        speed_readout = f"Current speed of {self.velocity.get_magnitude()} m/s."
-        distance_readout = f"Current total distance of {self.total_distance.get_value()} meters."
-        heading_readout = f"Pitch: {self.orientation.y.get_value()}, Roll: {self.orientation.x.get_value()}, Yaw: {self.orientation.z.get_value()}"
-        position_readout = f"Position x:{self.position.x.get_value()}, z:{self.position.z.get_value()}"
-        altitude_readout = f"Altitude: {self.position.y.get_value()}"
+        speed_readout = f"Spd: {self.velocity.get_magnitude()} m/s."
+        distance_readout = f"Tot dist: {self.total_distance.get()} meters."
+        heading_readout = f"P: {self.orientation.y.get()}, R: {self.orientation.x.get()}, Y: {self.orientation.z.get()}"
+        position_readout = f"Pos x:{self.position.x.get()}, z:{self.position.z.get()}"
+        altitude_readout = f"Alt: {self.position.y.get()}"
         print(speed_readout)
         print(distance_readout)
         print(heading_readout)

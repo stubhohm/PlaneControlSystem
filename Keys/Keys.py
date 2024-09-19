@@ -1,10 +1,10 @@
-left_outboard = 'Left out Board Elevon'
-left_inboard = 'Left in Board Elevon'
-right_outboard = 'Right out Board Elevon'
-right_inboard = 'Right in Board Elevon'
+left_outboard = 'LoB'
+left_inboard = 'LiB'
+right_outboard = 'RoB'
+right_inboard = 'RiB'
 
-left_rudder = 'Left Rudder'
-right_rudder = 'Right Rudder'
+left_rudder = 'LR'
+right_rudder = 'RR'
 
 left = True
 right = False

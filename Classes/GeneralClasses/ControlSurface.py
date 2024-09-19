@@ -1,54 +1,56 @@
 from .Attributes import IntAtt, StrAtt
-
+slots = ['__starting_position', 'current_position', 'target_position',
+         'max_position', 'min_position', '__trim', 'target_trim', 'change_rate',
+         'target_tolerance', 'name']
 class ControlSurface():
+    __slots__ = slots
     def __init__(self) -> None:
         self.__starting_position = IntAtt(0)
         self.current_position = IntAtt(0)
-        self.__starting_position = IntAtt(0)
         self.target_position = IntAtt(0)
         self.max_position = IntAtt(100)
         self.min_position = IntAtt(-100)
         self.__trim = IntAtt(0)
         self.target_trim = IntAtt(0)
         self.change_rate = IntAtt(5)
-        self.target_tolerance = IntAtt(int(self.change_rate.get_value()/2 + 1))
-        self.name = StrAtt('Unnamed Control Surface')
+        self.target_tolerance = IntAtt(int(self.change_rate.get()/2 + 1))
+        self.name = StrAtt('Unnamed')
 
     def __bind_target_position(self):
-        if self.target_position.get_value() > self.max_position.get_value():
-            self.target_position.set_value(self.max_position.get_value())
-        if self.target_position.get_value() < self.min_position.get_value():
-            self.target_position.set_value(self.min_position.get_value())
+        if self.target_position.get() > self.max_position.get():
+            self.target_position.set(self.max_position.get())
+        if self.target_position.get() < self.min_position.get():
+            self.target_position.set(self.min_position.get())
         
     def __bind_trim(self):
-        if self.target_trim.get_value() > self.max_position.get_value():
-            self.target_trim.set_value(self.max_position.get_value())
-        if self.target_trim.get_value() < self.min_position.get_value():
-            self.target_trim.set_value(self.min_position.get_value())
+        if self.target_trim.get() > self.max_position.get():
+            self.target_trim.set(self.max_position.get())
+        if self.target_trim.get() < self.min_position.get():
+            self.target_trim.set(self.min_position.get())
 
     def __is_in_tolerance(self, include_trim = False):
-        distance_to_target = self.current_position.get_value() - self.target_position.get_value()
+        distance_to_target = self.current_position.get() - self.target_position.get()
         if include_trim:
-            distance_to_target += self.__trim.get_value()
-        in_tolerance = (abs(distance_to_target) < self.target_tolerance.get_value())
+            distance_to_target += self.__trim.get()
+        in_tolerance = (abs(distance_to_target) < self.target_tolerance.get())
         return in_tolerance
 
     def __incriment_position(self):
-        change = self.change_rate.get_value()
-        if self.current_position.get_value() > self.target_position.get_value():
+        change = self.change_rate.get()
+        if self.current_position.get() > self.target_position.get():
             change *= -1
-        self.current_position.set_value(self.current_position.get_value() + change)
+        self.current_position.set(self.current_position.get() + change)
 
     def __incriment_trim(self):
-        change = int(self.change_rate.get_value() / 2)
-        if self.__trim.get_value() > self.target_trim.get_value():
+        change = int(self.change_rate.get() / 2)
+        if self.__trim.get() > self.target_trim.get():
             change *= -1
-        self.__trim.set_value(self.__trim.get_value() + change)
+        self.__trim.set(self.__trim.get() + change)
 
     def return_to_zero(self):
         if self.__is_in_tolerance(True):
             return
-        self.target_position.set_value(self.__trim.get_value() + 0)
+        self.target_position.set(self.__trim.get() + 0)
         self.__incriment_position()
         self.__incriment_trim()
 
@@ -61,10 +63,10 @@ class ControlSurface():
 
     def set_target_position(self, value:int):
         '''Sets the target position within the bounds set by the max and min of the control component.'''
-        self.target_position.set_value(value)
+        self.target_position.set(value)
         self.__bind_target_position()
 
     def set_target_trim(self, value:int):
         '''Sets the targt trim valout within the bounds to the trim binding which is based on the total min and max ranges.'''
-        self.target_trim.set_value(value)
+        self.target_trim.set(value)
         self.__bind_trim()

@@ -21,21 +21,21 @@ class Plane ():
         print('not impliments')
 
     def __set_trim(self, trim:Vect3Att):
-        roll = trim.x.get_value()
-        ptich = trim.y.get_value()
-        yaw = trim.z.get_value()
+        roll = trim.x.get()
+        ptich = trim.y.get()
+        yaw = trim.z.get()
 
     def __set_thrust(self, thrust:int):
         self.engines.set_thrust(thrust)
     
     def __set_control_surfaces(self, control_input:Vect3Att):
-        roll = control_input.x.get_value()
-        pitch = control_input.y.get_value()
-        yaw = control_input.z.get_value()
-        self.telemetry.orientation.set_value(control_input)
+        roll = control_input.x.get()
+        pitch = control_input.y.get()
+        yaw = control_input.z.get()
+        self.telemetry.orientation.set(control_input)
 
     def __set_SAS(self, stability_assistance:bool):
-        self.stability_assistance.set_value(stability_assistance)
+        self.stability_assistance.set(stability_assistance)
 
     def startup_sequence(self):
         self.engines.activate_engines()
@@ -69,6 +69,6 @@ class Plane ():
         avg_thrust = int ((thrust[0] + thrust[1])/2)
         speed = int(max_speed * (avg_thrust / 100))
         
-        self.telemetry.update_telemetry(speed, self.telemetry.orientation.get_value(), .1)
+        self.telemetry.update_telemetry(speed, self.telemetry.orientation.get(), .1)
 
 
