@@ -50,9 +50,9 @@ class Engine():
             side = 'Left'
         else:
             side = 'Right'
-        self.air_spike.name.set_value(f'{side} Air Spike')
-        self.throttle.name.set_value(f'{side} Throttle')
-        self.nozzle.name.set_value(f'{side} Nozzle')
+        self.air_spike.name.set(f'{side} Air Spike')
+        self.throttle.name.set(f'{side} Throttle')
+        self.nozzle.name.set(f'{side} Nozzle')
 
     def run(self):
         self.air_spike.calculate_target()
@@ -62,23 +62,23 @@ class Engine():
         self.nozzle.deploy()
 
     def activate_engine(self):
-        self.is_active.set_value(True)
+        self.is_active.set(True)
 
     def deactivate_engine(self):
-        self.is_active.set_value(False)
+        self.is_active.set(False)
     
     def get_engine_state(self):
-        return self.is_active.get_value()
+        return self.is_active.get()
     
     def get_throttle(self):
-        return self.throttle.current_position.get_value()
+        return self.throttle.current_position.get()
     
     def print(self, position):
         throttle = self.get_throttle()
-        tgt_throttle = self.throttle.target_position.get_value()
+        tgt_throttle = self.throttle.target_position.get()
         active = self.get_engine_state()
-        air_spike = self.air_spike.current_position.get_value()
-        nozzle = self.nozzle.current_position.get_value()
+        air_spike = self.air_spike.current_position.get()
+        nozzle = self.nozzle.current_position.get()
         print()
         print(f'{position} Engine State: {active}')
         print(f'Throttle:{throttle}')

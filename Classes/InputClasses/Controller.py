@@ -15,21 +15,21 @@ class Controller():
         self.target_throttle = TargetThrottle()
 
     def __set_trottle(self, value:int):
-        self.target_throttle.throttle.set_value(value)
+        self.target_throttle.throttle.set(value)
 
     def __set_flight_assistant(self, value:bool):
-        self.flight_assistant.set_deployed.set_value(value)
+        self.flight_assistant.set_deployed.set(value)
 
     def __set_landing_gear(self, value:bool):
-        self.landing_gear.set_deployed.set_value(value)
+        self.landing_gear.set_deployed.set(value)
 
     def __set_target_orientation(self, value:Vect3Att):
-        self.target_orientation.vector.set_value(value)
+        self.target_orientation.vector.set(value)
 
     def __set_target_trim(self, value:Vect3Att):
-        self.target_trim.vector.set_value(value)
+        self.target_trim.vector.set(value)
 
-    def set_values(self, throttle:int, flight_assist:bool, landing_gear:bool, tgt_orient:Vect3Att, tgt_trim:Vect3Att):
+    def set(self, throttle:int, flight_assist:bool, landing_gear:bool, tgt_orient:Vect3Att, tgt_trim:Vect3Att):
         self.__set_flight_assistant(flight_assist)
         self.__set_landing_gear(landing_gear)
         self.__set_target_orientation(tgt_orient)
