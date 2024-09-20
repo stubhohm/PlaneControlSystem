@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 from Modules.Dependencies import cosine_lookup, sine_lookup
-from ...GeneralClasses.Attributes import Vect3Att, BoolAtt, IntAtt
-=======
-from Modules.Dependencies import math
 from ...GeneralClasses.Attributes import Vect3Att, IntAtt
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 
 class Telemetry():
     def __init__(self) -> None:
@@ -24,24 +19,14 @@ class Telemetry():
         self.initial_orientation.maximum.set(360)
 
     def __calculate_velocity(self, speed:int):
-<<<<<<< HEAD
-        pitch = self.orientation.y.get()
-        yaw = self.orientation.z.get()
-    
-        vx = speed * cosine_lookup(pitch) * cosine_lookup(yaw)
-        vy = speed * cosine_lookup(pitch) * sine_lookup(yaw)
-        vz = speed * sine_lookup(pitch)
-        print(vx, vy, vz)
-=======
         # Get pitch and yaw in radians
-        pitch_rad = math.radians(self.orientation.y.get())
-        yaw_rad = math.radians(self.orientation.z.get())
+        pitch_rad = self.orientation.y.get()
+        yaw_rad = self.orientation.z.get()
 
         # Calculate velocity components
-        vx = speed * math.cos(pitch_rad) * math.cos(yaw_rad)
-        vy = speed * math.sin(pitch_rad)
-        vz = speed * math.cos(pitch_rad) * math.sin(yaw_rad)
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
+        vx = speed * cosine_lookup(pitch_rad) * cosine_lookup(yaw_rad)
+        vy = speed * sine_lookup(pitch_rad)
+        vz = speed * cosine_lookup(pitch_rad) * sine_lookup(yaw_rad)
         return (vx, vy, vz)
 
     def update_telemetry(self, speed:int, orientation:Vect3Att, delta_time:float):
@@ -54,20 +39,12 @@ class Telemetry():
         self.total_distance.set(total_dist)
 
     def print(self):
-<<<<<<< HEAD
-        speed_readout = f"Spd: {self.velocity.get_magnitude()} m/s."
-        distance_readout = f"Tot dist: {self.total_distance.get()} meters."
-        heading_readout = f"P: {self.orientation.y.get()}, R: {self.orientation.x.get()}, Y: {self.orientation.z.get()}"
-        position_readout = f"Pos x:{self.position.x.get()}, z:{self.position.z.get()}"
-        altitude_readout = f"Alt: {self.position.y.get()}"
-=======
         speed_readout = f"Current speed of {self.velocity.get_magnitude()} m/s."
         distance_readout = f"Current total distance of {self.total_distance.get()} meters."
         heading_readout = f"Roll: {self.orientation.x.get()}, Pitch: {self.orientation.y.get()}, Yaw: {self.orientation.z.get()}"
         position_readout = f"Position x:{self.position.x.get()}, z:{self.position.z.get()}"
         altitude_readout = f"Altitude: {self.position.y.get()}"
         print()
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         print(speed_readout)
         print(distance_readout)
         print(heading_readout)

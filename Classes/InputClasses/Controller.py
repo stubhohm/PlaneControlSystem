@@ -21,7 +21,7 @@ class Controller():
         self.flight_assistant.set_deployed.set(value)
 
     def __set_landing_gear(self, value:bool):
-        self.landing_gear.set_deployed.set(value)
+        self.landing_gear.stow_gear.set((not value))
 
     def __set_target_orientation(self, value:Vect3Att):
         self.target_orientation.vector.set(value)
@@ -29,11 +29,7 @@ class Controller():
     def __set_target_trim(self, value:Vect3Att):
         self.target_trim.vector.set(value)
 
-<<<<<<< HEAD
-    def sets(self, throttle:int, flight_assist:bool, landing_gear:bool, tgt_orient:Vect3Att, tgt_trim:Vect3Att):
-=======
     def set(self, throttle:int, flight_assist:bool, landing_gear:bool, tgt_orient:Vect3Att, tgt_trim:Vect3Att):
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.__set_flight_assistant(flight_assist)
         self.__set_landing_gear(landing_gear)
         self.__set_target_orientation(tgt_orient)

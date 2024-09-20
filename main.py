@@ -1,9 +1,5 @@
 import tracemalloc
 tracemalloc.start()
-<<<<<<< HEAD
-
-=======
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 from Classes.Plane import Plane
 from Classes.InputClasses.Controller import Controller
 from Classes.GeneralClasses.Attributes import Vect3Att

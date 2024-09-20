@@ -55,12 +55,8 @@ class Elevon(ControlSurface):
     
     def deploy(self):
         if not self.move_to_target():
-<<<<<<< HEAD
-            print(f'{self.name.get()} is not in tolerance.')
-=======
             return
             #print(f'\n{self.name.get()} is not in tolerance.')
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 
     def retract(self):
         self.return_to_zero()

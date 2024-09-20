@@ -5,13 +5,9 @@ class Wheel(ControlSurface):
     def __init__(self) -> None:
         super().__init__()
         self.min_position.set(0)
-<<<<<<< HEAD
-        self.change_rate.set(1)
-=======
         self.change_rate.set(5)
         self.target_tolerance.set(2)
         self.set_target_position(self.max_position.get())
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.deploying = BoolAtt(False)
         self.deployed = BoolAtt(False)
         self.brakes_engaged = BoolAtt(False)
@@ -26,31 +22,6 @@ class Wheel(ControlSurface):
         self.brakes_engaged.get()
 
     def set_wheel_bools(self):
-<<<<<<< HEAD
-        if self.current_position.get() == self.max_position.get():
-            self.deploying.set(False)
-            self.deployed.set(True)
-        else:
-            self.deploying.set(True)
-            self.deployed.set(False)
-
-    def get_wheel_bools(self):
-        self.set_wheel_bools()
-        return self.deployed.get(), self.deploying.get()
-
-    def print_wheel_bools(self, position:str):
-        if self.deploying.get() == True:
-            print(f"Wheel in {position} is deploying.")
-        if self.deployed.get() == True:
-            print(f"Wheel in {position} is deployed.")
-        if self.brakes_engaged.get == True:
-            print(f"Wheel in {position} is braking.")
-
-    def deploy(self):
-        if not self.move_to_target():
-            print(f'{self.name.get()} is not in tolerance.')
-        self.set_wheel_bools()
-=======
         # Assume we are retracted
         self.deployed.set(False)
         if self.current_position.get() == self.target_position.get():
@@ -85,7 +56,6 @@ class Wheel(ControlSurface):
         self.run()
             #print(f'\n{self.name.get()} is not in tolerance.')
         return self.get_wheel_bools()
->>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
      
     def retract(self):
         self.return_to_zero()
