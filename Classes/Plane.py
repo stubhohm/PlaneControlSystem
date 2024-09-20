@@ -35,7 +35,7 @@ class Plane ():
 
     def startup_sequence(self):
         self.engines.activate_engines()
-        self.landing_gear.deploy()
+        self.landing_gear.deploy_gear()
         self.landing_gear.engage_brakes()
         self.elevons.return_to_zero()
 

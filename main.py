@@ -36,9 +36,12 @@ def init_variables():
     return trim, orient
 
 def setup():
-    throttle = 50
+    throttle = 5
     plane.startup_sequence()
     plane.engines.set_thrust(throttle)
+    while not plane.landing_gear.is_deployed():
+        plane.run()
+        plane.landing_gear.print()
 
 
 def loop():
@@ -53,8 +56,6 @@ def loop():
         plane.impliment_control_inputs(assist, throttle, trim, orient)
         plane.run()
         plane.set_telemetry()
-        if plane.landing_gear.deployed.get():
-            plane.landing_gear.retract()
 
         running = abort_loop(i)
         i = incriment_i(i)

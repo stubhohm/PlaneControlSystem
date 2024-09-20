@@ -46,9 +46,9 @@ class ControlSurface():
         self.__trim.set(self.__trim.get() + change)
 
     def return_to_zero(self):
+        self.target_position.set(self.__trim.get() + 0)
         if self.__is_in_tolerance(True):
             return True
-        self.target_position.set(self.__trim.get() + 0)
         print(self.target_position.get())
         return self.move_to_target()
 

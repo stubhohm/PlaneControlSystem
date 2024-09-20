@@ -15,5 +15,6 @@ class AirSpike(ControlSurface):
     def retract(self):
         self.return_to_zero()
 
-    def calculate_target(self):
-        return
+    def calculate_target(self, delta_p:int):
+        tgt_position = self.current_position.get() + delta_p
+        self.set_target_position(tgt_position)
