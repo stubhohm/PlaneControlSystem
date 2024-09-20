@@ -1,6 +1,5 @@
-from Keys.Keys import left, right, proximal, distal
-from .GeneralClasses.Attributes import BoolAtt, IntAtt, StrAtt
-from .GeneralClasses.Attributes import Vect2Att, Vect3Att
+from .GeneralClasses.Attributes import BoolAtt, StrAtt
+from .GeneralClasses.Attributes import Vect3Att
 from .OutputClasses.EngineClasses.Engine import Engines
 from .OutputClasses.ControlSurfaceClasses.Elevon import Elevons
 from .OutputClasses.ControlSurfaceClasses.Rudder import Rudders
@@ -21,25 +20,22 @@ class Plane ():
         print('not impliments')
 
     def __set_trim(self, trim:Vect3Att):
-        roll = trim.x.get()
-        ptich = trim.y.get()
-        yaw = trim.z.get()
+        self.elevons.set_trim(trim)
+        self.rudders.set_trim(trim)
 
     def __set_thrust(self, thrust:int):
         self.engines.set_thrust(thrust)
     
     def __set_control_surfaces(self, control_input:Vect3Att):
-        roll = control_input.x.get()
-        pitch = control_input.y.get()
-        yaw = control_input.z.get()
-        self.telemetry.orientation.set(control_input)
+        self.elevons.set_positions(control_input)
+        self.rudders.set_positions(control_input)
 
     def __set_SAS(self, stability_assistance:bool):
         self.stability_assistance.set(stability_assistance)
 
     def startup_sequence(self):
         self.engines.activate_engines()
-        self.landing_gear.deploy()
+        self.landing_gear.deploy_gear()
         self.landing_gear.engage_brakes()
         self.elevons.return_to_zero()
 
@@ -55,6 +51,8 @@ class Plane ():
         self.__set_thrust(thrust)
         self.__set_trim(trim_vector)
         self.__set_control_surfaces(control_vector)
+        ## For testing
+        self.telemetry.orientation.set(control_vector)
 
     def run(self):
         self.engines.run()

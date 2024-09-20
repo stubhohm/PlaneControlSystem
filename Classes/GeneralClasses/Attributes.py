@@ -72,7 +72,11 @@ class Vect3Att(Attribute):
     def get_normal(self):
         print('got normal')
 
+<<<<<<< HEAD
     def __set_from_tuple(self, vector:tuple[int,int,int]):
+=======
+    def __set_from_tuple(self, vector:tuple[int|float,int|float,int|float]):
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.x.set(vector[0])
         self.y.set(vector[1])
         self.z.set(vector[2])
@@ -123,10 +127,15 @@ class Vect2Att(Attribute):
         self.x = IntAtt(0)
         self.y = IntAtt(0)
         self.set(self)
+<<<<<<< HEAD
         self.maximum = IntAtt(0)
         self.minimum = IntAtt(0)
 
     def __set_from_tuple(self, vector:tuple[int,int]):
+=======
+
+    def __set_from_tuple(self, vector:tuple[int|float,int|float]):
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.x.set(vector[0])
         self.y.set(vector[1])
         self.value = vector

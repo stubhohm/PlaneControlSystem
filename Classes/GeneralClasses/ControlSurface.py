@@ -14,7 +14,11 @@ class ControlSurface():
         self.target_trim = IntAtt(0)
         self.change_rate = IntAtt(5)
         self.target_tolerance = IntAtt(int(self.change_rate.get()/2 + 1))
+<<<<<<< HEAD
         self.name = StrAtt('Unnamed')
+=======
+        self.name = StrAtt('Unnamed Control Surface')
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 
     def __bind_target_position(self):
         if self.target_position.get() > self.max_position.get():
@@ -48,11 +52,18 @@ class ControlSurface():
         self.__trim.set(self.__trim.get() + change)
 
     def return_to_zero(self):
+        self.target_position.set(self.__trim.get() + 0)
         if self.__is_in_tolerance(True):
+<<<<<<< HEAD
             return
         self.target_position.set(self.__trim.get() + 0)
         self.__incriment_position()
         self.__incriment_trim()
+=======
+            return True
+        print(self.target_position.get())
+        return self.move_to_target()
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 
     def move_to_target(self):
         if self.__is_in_tolerance(True):
@@ -61,12 +72,20 @@ class ControlSurface():
         self.__incriment_trim()
         return False
 
-    def set_target_position(self, value:int):
+    def set_target_position(self, value:int|float):
         '''Sets the target position within the bounds set by the max and min of the control component.'''
+<<<<<<< HEAD
+=======
+        value = int(value)
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.target_position.set(value)
         self.__bind_target_position()
 
-    def set_target_trim(self, value:int):
+    def set_target_trim(self, value:int|float):
         '''Sets the targt trim valout within the bounds to the trim binding which is based on the total min and max ranges.'''
+<<<<<<< HEAD
+=======
+        value = int(value)
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
         self.target_trim.set(value)
         self.__bind_trim()

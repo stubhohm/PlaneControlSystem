@@ -49,10 +49,17 @@ class Engine():
         if self.laterality == left:
             side = 'L'
         else:
+<<<<<<< HEAD
             side = 'R'
         self.air_spike.name.set(f'{side} Aspk')
         self.throttle.name.set(f'{side} Tht')
         self.nozzle.name.set(f'{side} Nzl')
+=======
+            side = 'Right'
+        self.air_spike.name.set(f'{side} Air Spike')
+        self.throttle.name.set(f'{side} Throttle')
+        self.nozzle.name.set(f'{side} Nozzle')
+>>>>>>> 85956aa976b3cb76df5bbafe2e36c0b1b148c153
 
     def run(self):
         self.air_spike.calculate_target()
