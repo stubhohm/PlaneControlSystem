@@ -1,4 +1,4 @@
-from Modules.Dependencies import sqrt
+#from Modules.Dependencies import sqrt
 
 class Attribute():
     def __init__(self) -> None:
@@ -21,6 +21,8 @@ class IntAtt(Attribute):
         return super().get()
     
     def set(self, value:int):
+        if type(value) not in [int, float]:
+            return
         self.value = value
     
     def add(self, value:int):
@@ -42,7 +44,12 @@ class BoolAtt(Attribute):
         return super().get()
     
     def set(self, value:bool):
+        if type(value) != bool:
+            return
         self.value = value
+
+    def is_not(self):
+        return not self.get()
     
 class StrAtt(Attribute):
     __slots__ = ['value']
@@ -56,7 +63,18 @@ class StrAtt(Attribute):
         return super().get()
     
     def set(self, value:str):
+        if type(value) != str:
+            return
         self.value = value
+
+    def lower(self):
+        return self.get().lower()
+    
+    def upper(self):
+        return self.get().upper()
+    
+    def capitalize(self):
+        return self.get().capitalize()
 
 class Vect3Att(Attribute):
     def __init__(self) -> None:
@@ -123,7 +141,7 @@ class Vect2Att(Attribute):
         self.y = IntAtt(0)
         self.set(self)
 
-    def __set_from_tuple(self, vector:tuple[int|float,int|float]):
+    def __set_from_tuple(self, vector:tuple[int|float, int|float]):
         self.x.set(vector[0])
         self.y.set(vector[1])
         self.value = vector
@@ -163,3 +181,4 @@ class Vect2Att(Attribute):
             summation += (tuple[i] * tuple[i])
         magnitude = sqrt(summation)
         return magnitude
+
