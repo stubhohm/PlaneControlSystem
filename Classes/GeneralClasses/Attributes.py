@@ -1,7 +1,6 @@
 from Modules.Dependencies import sqrt
 
 class Attribute():
-    __slots__ = ['value']
     def __init__(self) -> None:
         self.value = None
 

@@ -1,6 +1,3 @@
-
-
-
 '''
 def generate_tables():
     # Create a cosine lookup table
