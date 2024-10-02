@@ -4,15 +4,14 @@
 
 class V3Attribute {
 private:
-    IntAttribute x; //int attribute
-    IntAttribute y; //int attribute
-    IntAttribute z; //int attribute
+    IntAttribute x, y, z; //int attributes
 
 public:
     // Constructor
-    V3Attribute(int x, int y, int z);
+    V3Attribute(int x = 0, int y = 0, int z = 0);
 
     // Component Setters
+    void set_value(int x, int y, int z);
     void setX(int newX);
     void setY(int newY);
     void setZ(int newZ);
@@ -32,9 +31,11 @@ public:
     V3Attribute subtract(V3Attribute vector);
 
     // Scale Vector method
-    void scale_vector(int scaler);
+    V3Attribute scale_vector(int scaler);
 
     int get_magnitude() const;
+
+    void print() const;
 };
 
 #endif

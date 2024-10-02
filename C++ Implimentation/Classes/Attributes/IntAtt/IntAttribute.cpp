@@ -1,3 +1,4 @@
+#include <iostream>
 #include "IntAttribute.h"
 
 // Constructor implimentation
@@ -23,4 +24,8 @@ int IntAttribute::add(int amount){
 int IntAttribute::subtract(int amount){
     int difference = value - amount;
     return difference;
+}
+
+void IntAttribute::print() const{
+    std::cout << "Int Value: " << value << "\n";
 }

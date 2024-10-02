@@ -20,6 +20,8 @@ public:
 
     // Subtract method
     int subtract(int amount);
+
+    void print() const;
 };
 
 #endif

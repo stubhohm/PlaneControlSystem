@@ -1,3 +1,4 @@
+#include <iostream>
 #include "CharAttribute.h"
 
 // Constructor implimentation
@@ -13,4 +14,8 @@ char CharAttribute::getValue() const{
 // Setter for value
 void CharAttribute::setValue(char newValue){
     value = newValue;
+}
+
+void CharAttribute::print() const{
+    std::cout << "string: " << value << "\n";
 }

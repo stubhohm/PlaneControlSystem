@@ -15,6 +15,8 @@ public:
     // Value Getter
     char getValue() const;
 
+    void print() const;
+
 };
 
 #endif

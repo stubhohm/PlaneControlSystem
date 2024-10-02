@@ -1,10 +1,14 @@
 #include "V3Attribute.h"
+#include <iostream>
 #include <math.h>
 
 // Constructor implimentation
 
-V3Attribute::V3Attribute(int x, int y, int z)
-    : setX(x), setY(y), setZ(z) {}
+V3Attribute::V3Attribute(int newX, int newY, int newZ)
+    : x(newX), y(newY), z(newZ)
+    {
+        set_value(newX, newY, newZ);
+}
 
 // Getter for values
 int V3Attribute::getX() const{
@@ -17,6 +21,12 @@ int V3Attribute::getZ() const{
     return z.getValue();
 }
 
+
+void V3Attribute::set_value(int newX, int newY, int newZ){
+    setX(newX);
+    setY(newY);
+    setZ(newZ);
+}
 void V3Attribute::setX(int newX){
     x.setValue(newX);
 }
@@ -56,4 +66,8 @@ V3Attribute V3Attribute::scale_vector(int scaler){
     int newZ = getZ() * scaler;
     V3Attribute new_vector(newX, newY, newZ);
     return new_vector;
+}
+
+void V3Attribute::print() const{
+    std::cout << "Vector Readout x: "<< x.getValue() << " y: " << y.getValue() << " z: " << z.getValue()<< "\n";
 }

@@ -17,6 +17,8 @@ public:
 
     // Value Inverter
     bool getNotValue() const;
+
+    void print() const;
 };
 
 #endif

@@ -1,4 +1,4 @@
-#from Modules.Dependencies import sqrt
+from Modules.Dependencies import sqrt
 
 class Attribute():
     def __init__(self) -> None:

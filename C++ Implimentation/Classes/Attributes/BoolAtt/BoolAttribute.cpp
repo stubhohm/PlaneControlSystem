@@ -1,3 +1,4 @@
+#include <iostream>
 #include "BoolAttribute.h"
 
 // Constructor implimentation
@@ -21,4 +22,8 @@ bool BoolAttribute::getNotValue() const{
     } else {
         return true;
     }
+}
+
+void BoolAttribute::print() const{
+    std::cout << "Int Value: " << value << "\n";
 }
