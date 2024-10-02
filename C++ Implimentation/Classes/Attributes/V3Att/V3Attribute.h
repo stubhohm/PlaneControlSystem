@@ -1,6 +1,6 @@
 #ifndef V3ATTRIBUTE_H
 #define V3ATTRIBUTE_H
-#include "IntAttribute.h"
+#include "..\IntAtt\IntAttribute.h"
 
 class V3Attribute {
 private:
