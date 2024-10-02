@@ -2,6 +2,7 @@
 #define CONTROLSURFACE_H
 #include "..\Attributes\IntAtt\IntAttribute.h"
 #include "..\Attributes\StrAtt\CharAttribute.h"
+#include "..\Attributes\BoolAtt\BoolAttribute.h"
 
 class ControlSurface{
 private:
@@ -14,7 +15,7 @@ void bind_target_position();
 
 void bind_trim();
 
-bool is_in_tolerance(bool include_trim);
+BoolAttribute is_in_tolerance(bool include_trim);
 
 void incriment_position();
 
@@ -22,9 +23,9 @@ void incriment_trim();
 
 public:
 
-bool return_to_zero();
+BoolAttribute return_to_zero();
 
-bool move_to_target();
+BoolAttribute move_to_target();
 
 void set_target_position(int target_value);
 

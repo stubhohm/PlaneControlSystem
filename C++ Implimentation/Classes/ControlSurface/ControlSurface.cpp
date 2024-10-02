@@ -1,5 +1,6 @@
 #include "ControlSurface.h"
-#include <math.h>
+#include "Dependencies.h"
+
 
 ControlSurface::ControlSurface()
       : starting_position(0),
@@ -37,12 +38,12 @@ void ControlSurface::bind_trim(){
     }
 }
 
-bool ControlSurface::is_in_tolerance(bool include_trim){
+BoolAttribute ControlSurface::is_in_tolerance(bool include_trim){
     int distance_to_target = current_position.getValue() - target_position.getValue();
     if (include_trim) {
         distance_to_target += trim.getValue();
     }
-    bool in_tolerance = (abs(distance_to_target) < target_tolerance.getValue());
+    BoolAttribute in_tolerance(abs(distance_to_target) < target_tolerance.getValue());
     return in_tolerance;
 }
 
@@ -64,22 +65,26 @@ void ControlSurface::incriment_trim(){
         }
 }
 
-bool ControlSurface::return_to_zero(){
+BoolAttribute ControlSurface::return_to_zero(){
     target_position.setValue(trim.getValue() + 0);
-    if (is_in_tolerance(true)) {
-        return true;
+    BoolAttribute bool_value(true);
+    if (is_in_tolerance(true).getValue()) {
+        return bool_value;
     } else {
-    return move_to_target();
+    bool_value = move_to_target();
+    return bool_value;
     }
 }
 
-bool ControlSurface::move_to_target(){
-    if (is_in_tolerance(true)){
-        return true;
+BoolAttribute ControlSurface::move_to_target(){
+    BoolAttribute bool_value = true;
+    if (is_in_tolerance(true).getValue()){
+        return bool_value;
     } else {
     incriment_position();
     incriment_trim();
-    return false;
+    bool_value.setValue(false);
+    return bool_value;
     }
 }
 
