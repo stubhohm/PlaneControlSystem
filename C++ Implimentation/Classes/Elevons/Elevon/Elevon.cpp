@@ -1,9 +1,9 @@
+#include <iostream>
 #include "Elevon.h"
 
 
     Elevon::Elevon(char new_name, bool new_laterality, bool new_proximal) 
-        : name(new_name), laterality(new_laterality), proximal(new_proximal)
-{}
+        : name(new_name), laterality(new_laterality), proximal(new_proximal){}
 
 int Elevon::set_yaw(int yaw, bool btrim){
         return 0;
@@ -44,7 +44,7 @@ void Elevon::deploy(){
         if (move_to_target().getNotValue()){
             return;
         }
-        //print(f'\n{self.name.get()} is not in tolerance.')
+        std::cout << "\n" << name.getValue() << "is not in tolerance.";
 }
 
 void Elevon::set_position(int roll, int pitch, int yaw, bool btrim){
@@ -60,7 +60,7 @@ void Elevon::set_position(int roll, int pitch, int yaw, bool btrim){
 }
 
 void Elevon::print(){
-        //print(f'\n{self.name.get()}')
-        //print(f'Current: {self.current_position.get()}')
-        //print(f'Target:{self.target_position.get()}')
+        std::cout << "\n" << name.getValue();
+        std::cout"\nCurrent: " << current_position.getValue();
+        std::cout "\nTarget:" <<target_position.getValue();
 }

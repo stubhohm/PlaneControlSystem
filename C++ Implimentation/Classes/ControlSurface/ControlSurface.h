@@ -6,8 +6,6 @@
 
 class ControlSurface{
 private:
-    IntAttribute starting_position, current_position, target_position, max_position, min_position, trim, target_trim, change_rate, target_tolerance;
-    CharAttribute name;
 
     ControlSurface();
 
@@ -22,6 +20,9 @@ void incriment_position();
 void incriment_trim();
 
 public:
+
+    IntAttribute starting_position, current_position, target_position, max_position, min_position, trim, target_trim, change_rate, target_tolerance;
+    CharAttribute name;
 
 BoolAttribute return_to_zero();
 
