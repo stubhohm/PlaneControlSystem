@@ -1,5 +1,6 @@
 #ifndef BOOLATTRIBUTE_H
 # define BOOLATTRIBUTE_H
+#include "..\Modules\Dependencies.h"
 
 class BoolAttribute {
 private:
@@ -7,7 +8,7 @@ private:
 
 public:
     // Constructor
-    BoolAttribute(bool value);
+    BoolAttribute(bool value = false);
 
     // Value Setter
     void setValue(bool newValue);

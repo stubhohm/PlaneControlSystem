@@ -1,5 +1,6 @@
 #ifndef INTATTRIBUTE_H
 # define INTATTRIBUTE_H
+#include "..\Modules\Dependencies.h"
 
 class IntAttribute {
 private:

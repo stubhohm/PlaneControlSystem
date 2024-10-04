@@ -1,9 +1,8 @@
-#include <iostream>
 #include "BoolAttribute.h"
 
 // Constructor implimentation
 
-BoolAttribute::BoolAttribute(bool value)
+BoolAttribute::BoolAttribute(bool value = false)
     : value(value) {}
 
 // Getter for value

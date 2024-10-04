@@ -11,8 +11,6 @@ private:
     CharAttribute name;
     BoolAttribute laterality, proximal;
 
-    Elevon(char new_name, bool new_laterality, bool new_proximal);
-
 int set_yaw(int yaw, bool btrim);
 
 int set_pitch(int pitch, bool btrim);
@@ -20,6 +18,8 @@ int set_pitch(int pitch, bool btrim);
 int set_roll(int roll, bool btrim);
 
 public:
+
+    Elevon(char* new_name, bool new_laterality, bool new_proximal);
 
 void deploy();
 

@@ -2,7 +2,8 @@
 #define WHEEL_H
 #include "ControlSurface.h"
 #include "BoolAttribute.h"
-#include <tuple>
+#include "..\Modules\Dependencies.h"
+
 
 class Wheel : public ControlSurface{
  
@@ -29,6 +30,6 @@ std::tuple<bool, bool> deploy();
 std::tuple<bool, bool> retract();
 
 void run();
-}
+};
 
 #endif

@@ -1,7 +1,11 @@
-#include "Elevon\Elevon.h"
 #include "Elevons.h"
 
-    Elevons::Elevons():{}
+    Elevons::Elevons()
+      : left_inboard("l", left, proximal),
+        right_inboard("r", right, proximal),
+        left_outboard("L", left, distal),
+        right_outboard("R", right, distal)
+    {}
 
 void Elevons::set_position(int roll, int pitch, int yaw, bool btrim){
         left_inboard.set_position(roll, pitch, yaw, btrim);

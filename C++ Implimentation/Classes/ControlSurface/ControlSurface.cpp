@@ -1,5 +1,4 @@
 #include "ControlSurface.h"
-#include "Dependencies.h"
 
 
 ControlSurface::ControlSurface()
@@ -12,7 +11,7 @@ ControlSurface::ControlSurface()
         target_trim(0),
         change_rate(5),
         target_tolerance((change_rate.getValue() << 2) + 1),
-        name('U')
+        name("u")
 {}
 
 void ControlSurface::bind_target_position(){

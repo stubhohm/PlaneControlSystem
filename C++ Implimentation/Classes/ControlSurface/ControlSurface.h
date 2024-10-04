@@ -3,11 +3,10 @@
 #include "..\Attributes\IntAtt\IntAttribute.h"
 #include "..\Attributes\StrAtt\CharAttribute.h"
 #include "..\Attributes\BoolAtt\BoolAttribute.h"
+#include "..\Modules\Dependencies.h"
 
 class ControlSurface{
 private:
-
-    ControlSurface();
 
 void bind_target_position();
 
@@ -23,6 +22,8 @@ public:
 
     IntAttribute starting_position, current_position, target_position, max_position, min_position, trim, target_trim, change_rate, target_tolerance;
     CharAttribute name;
+
+    ControlSurface();
 
 BoolAttribute return_to_zero();
 
