@@ -8,7 +8,7 @@ private:
 
 public:
     // Constructor
-    IntAttribute(int value);
+    IntAttribute(int value = 0);
 
     // Value Setter
     void setValue(int newValue);

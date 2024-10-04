@@ -10,7 +10,7 @@ ControlSurface::ControlSurface()
         trim(0),
         target_trim(0),
         change_rate(5),
-        target_tolerance((change_rate.getValue() << 2) + 1),
+        target_tolerance((change_rate.getValue() >> 1) + 1),
         name("u")
 {}
 
@@ -56,7 +56,7 @@ void ControlSurface::incriment_position(){
 }
 
 void ControlSurface::incriment_trim(){
-        int change = change_rate.getValue() << 2;
+        int change = change_rate.getValue() >> 1;
         if (trim.getValue() > target_trim.getValue()){
             change *= -1;
         } else {

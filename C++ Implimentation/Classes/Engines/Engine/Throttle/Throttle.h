@@ -14,6 +14,8 @@ public:
 
     Throttle();
 
+int get_current_position();
+
 void run();
 
 };

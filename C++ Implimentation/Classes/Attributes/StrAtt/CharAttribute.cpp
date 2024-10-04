@@ -2,16 +2,16 @@
 
 // Constructor implimentation
 
-CharAttribute::CharAttribute(char* value)
+CharAttribute::CharAttribute(std::string value)
     : value(value) {}
 
 // Getter for value
-char* CharAttribute::getValue() const{
+std::string CharAttribute::getValue() const{
     return value;
 }
 
 // Setter for value
-void CharAttribute::setValue(char* newValue){
+void CharAttribute::setValue(std::string newValue){
     value = newValue;
 }
 

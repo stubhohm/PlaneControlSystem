@@ -13,7 +13,7 @@ void Elevons::set_position(int roll, int pitch, int yaw, bool btrim){
         right_inboard.set_position(roll, pitch, yaw, btrim);
         right_outboard.set_position(roll, pitch, yaw, btrim);
 }
-void Elevons::set_positions(V3Attribute vector, bool btrim){
+void Elevons::set_positions(V3Attribute vector, bool btrim = false){
         int roll = vector.getX();
         int pitch = vector.getY();
         int yaw = vector.getZ();

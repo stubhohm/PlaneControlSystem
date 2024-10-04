@@ -5,6 +5,10 @@
     change_rate.setValue(1);
 }
 
+int Throttle::get_current_position(){
+    return current_position.getValue();
+}
+
 void Throttle::deploy(){
     if (move_to_target().getNotValue()){
         return;

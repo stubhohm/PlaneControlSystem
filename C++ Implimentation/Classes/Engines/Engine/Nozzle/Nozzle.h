@@ -2,7 +2,6 @@
 #define NOZZLE_H
 #include "..\ControlSurface\ControlSurface.h"
 #include "..\Sensor\Barometer\Barometer.h"
-#include "..\Modules\Dependencies.h"
 
 class Nozzle : public ControlSurface {
 

@@ -61,8 +61,8 @@ class Plane ():
         self.landing_gear.run()
 
     def set_telemetry(self):
-
         max_speed = 30
+        
         thrust = self.engines.get_thrust()
         avg_thrust = int ((thrust[0] + thrust[1])/2)
         speed = int(max_speed * (avg_thrust / 100))

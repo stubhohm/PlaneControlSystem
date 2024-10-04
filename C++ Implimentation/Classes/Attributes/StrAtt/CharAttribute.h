@@ -4,17 +4,17 @@
 
 class CharAttribute {
 private:
-    char* value; //int attribute
+    std::string value; //int attribute
 
 public:
     // Constructor
-    CharAttribute(char* value);
+    CharAttribute(std::string value = "Unnamed");
 
     // Value Setter
-    void setValue(char* newValue);
+    void setValue(std::string newValue);
 
     // Value Getter
-    char* getValue() const;
+    std::string getValue() const;
 
     void print() const;
 
