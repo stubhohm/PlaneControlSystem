@@ -1,7 +1,7 @@
 #ifndef AIRSPIKE_H
 #define AIRSPIKE_H
-#include "..\ControlSurface\ControlSurface.h"
-#include "..\Sensor\Barometer\Barometer.h"
+#include "..\..\..\ControlSurface\ControlSurface.h"
+#include "..\..\..\Sensor\Barometer\Barometer.h"
 
 class AirSpike : public ControlSurface {
 

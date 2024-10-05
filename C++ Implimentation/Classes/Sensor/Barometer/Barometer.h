@@ -1,7 +1,6 @@
 #ifndef BAROMETER_H
 # define BAROMETER_H
-#include "..\IntAtt\IntAttribute.h"
-#include "..\Modules\Dependencies.h"
+#include "..\..\Attributes\IntAtt\IntAttribute.h"
 
 class Barometer {
 private:

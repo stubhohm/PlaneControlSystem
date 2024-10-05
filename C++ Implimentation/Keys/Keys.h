@@ -1,6 +1,6 @@
 #ifndef KEYS_H
 #define KEYS_H
-#include "Dependencies.h"
+#include "..\Modules\Dependencies.h"
 
 std::string left_outboard = "LoB";
 std::string left_inboard = "LiB";

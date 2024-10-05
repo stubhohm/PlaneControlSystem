@@ -1,9 +1,6 @@
 #ifndef HELPERFUNCTIONS_H
 #define HELPERFUNCTIONS_H
-
-#include "..\V3Att\V3Attribute.h"
-
-std::pair<V3Attribute, V3Attribute> init_variables();
+#include "..\..\Classes\Attributes\V3Att\V3Attribute.h"
 
 bool abort_loop(int i);
 

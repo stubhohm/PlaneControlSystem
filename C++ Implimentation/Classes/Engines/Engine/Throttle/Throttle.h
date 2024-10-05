@@ -1,6 +1,6 @@
 #ifndef THROTTLE_H
 #define THROTTLE_H
-#include "..\ControlSurface\ControlSurface.h"
+#include "..\..\..\ControlSurface\ControlSurface.h"
 
 class Throttle : public ControlSurface {
 

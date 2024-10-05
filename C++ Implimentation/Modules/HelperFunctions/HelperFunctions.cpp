@@ -1,17 +1,5 @@
 #include "HelperFunctions.h"
 
-std::pair<V3Attribute, V3Attribute> init_variables()
-{
-    V3Attribute orient;
-    orient.setValue(0, 0, 0);
-    V3Attribute trim;
-    trim.setValue(0,0,0);
-    std::pair<V3Attribute, V3Attribute> container;
-    container.first = trim;
-    container.second = orient;
-    return container;
-}
-
 bool abort_loop(int i){
     if (i % 2 != 0){
         return true;

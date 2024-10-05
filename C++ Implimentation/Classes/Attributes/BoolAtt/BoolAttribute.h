@@ -1,6 +1,6 @@
 #ifndef BOOLATTRIBUTE_H
 # define BOOLATTRIBUTE_H
-#include "..\Modules\Dependencies.h"
+#include "..\..\..\Modules\Dependencies.h"
 
 class BoolAttribute {
 private:

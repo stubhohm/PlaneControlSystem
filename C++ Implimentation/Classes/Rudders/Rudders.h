@@ -1,8 +1,8 @@
 #ifndef RUDDERS_H
 #define RUDDERS_H
 #include "Rudder\Rudder.h"
-#include "V3Attribute.h"
-#include "Keys.h"
+#include "..\Attributes\V3Att\V3Attribute.h"
+#include "..\..\Keys\Keys.h"
 
 class Rudders{
 private:

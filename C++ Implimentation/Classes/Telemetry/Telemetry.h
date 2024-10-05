@@ -1,9 +1,8 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
-#include "Dependencies.h"
-#include "..\IntAtt\IntAttribute.h"
-#include "..\V3Att\V3Attribute.h"
+#include "..\Attributes\IntAtt\IntAttribute.h"
+#include "..\Attributes\V3Att\V3Attribute.h"
 
 class Telemetry{
 private :

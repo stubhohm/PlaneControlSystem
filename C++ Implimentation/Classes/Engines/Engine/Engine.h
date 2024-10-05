@@ -1,8 +1,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
-#include "AirSpike.h"
-#include "Nozzle.h"
-#include "Throttle.h"
+#include "AirSpike\AirSpike.h"
+#include "Nozzle\Nozzle.h"
+#include "Throttle\Throttle.h"
 
 class Engine {
 

@@ -1,5 +1,17 @@
 #include "Loop.h"
 
+std::pair<V3Attribute, V3Attribute> init_variables()
+{
+    V3Attribute orient;
+    orient.setValue(0, 0, 0);
+    V3Attribute trim;
+    trim.setValue(0,0,0);
+    std::pair<V3Attribute, V3Attribute> container;
+    container.first = trim;
+    container.second = orient;
+    return container;
+}
+
 void loop(Plane black_bird){
     bool running = true;
     int i = 1;

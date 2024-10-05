@@ -1,6 +1,6 @@
 #ifndef CHARATTRIBUTE_H
 # define CHARATTRIBUTE_H
-#include "..\Modules\Dependencies.h"
+#include "..\..\..\Modules\Dependencies.h"
 
 class CharAttribute {
 private:

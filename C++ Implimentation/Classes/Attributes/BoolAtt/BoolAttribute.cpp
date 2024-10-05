@@ -2,7 +2,7 @@
 
 // Constructor implimentation
 
-BoolAttribute::BoolAttribute(bool value = false)
+BoolAttribute::BoolAttribute(bool value)
     : value(value) {}
 
 // Getter for value

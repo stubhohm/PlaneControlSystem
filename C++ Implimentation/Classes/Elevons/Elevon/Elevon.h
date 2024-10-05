@@ -1,9 +1,6 @@
 #ifndef ELEVON_H
 #define ELEVON_H
-#include "..\Attributes\BoolAtt\BoolAttribute.h"
-#include "..\Attributes\StrAtt\CharAttribute.h"
-#include "..\ControlSurface\ControlSurface.h"
-#include "..\Modules\Dependencies.h"
+#include "..\..\ControlSurface\ControlSurface.h"
 
 class Elevon : public ControlSurface{
 

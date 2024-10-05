@@ -1,7 +1,7 @@
 #ifndef NOZZLE_H
 #define NOZZLE_H
-#include "..\ControlSurface\ControlSurface.h"
-#include "..\Sensor\Barometer\Barometer.h"
+#include "..\..\..\ControlSurface\ControlSurface.h"
+#include "..\..\..\Sensor\Barometer\Barometer.h"
 
 class Nozzle : public ControlSurface {
 

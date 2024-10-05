@@ -1,8 +1,6 @@
 #ifndef LANDING_GEAR_H
 # define LANDING_GEAR_H
 
-#include "..\Modules\Dependencies.h"
-#include "BoolAttribute.h"
 #include "Wheel\Wheel.h"
 
 

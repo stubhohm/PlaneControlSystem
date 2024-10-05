@@ -1,9 +1,6 @@
 #ifndef WHEEL_H
 #define WHEEL_H
-#include "ControlSurface.h"
-#include "BoolAttribute.h"
-#include "..\Modules\Dependencies.h"
-
+#include "..\..\ControlSurface\ControlSurface.h"
 
 class Wheel : public ControlSurface{
  

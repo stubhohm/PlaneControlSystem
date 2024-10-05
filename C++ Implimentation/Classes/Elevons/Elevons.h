@@ -1,8 +1,8 @@
 #ifndef ELEVONS_H
 #define ELEVONS_H
 #include "Elevon\Elevon.h"
-#include "V3Attribute.h"
-#include "Keys.h"
+#include "..\Attributes\V3Att\V3Attribute.h"
+#include "..\..\Keys\Keys.h"
 
 class Elevons{
 private:
